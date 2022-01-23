@@ -32,6 +32,8 @@ class fenetre(Tk):
         self.listeY = []
         self.listeT = [0]
         self.valeurs = 'X,Y,T\n'
+        # num du fichier de sauvegarde
+        self.numero = 0
         # affichage dynamique du Label
         self.text_affichage = StringVar()
         #self.text_affichage.set("listes")
@@ -126,10 +128,11 @@ class fenetre(Tk):
  
 
     def valider(self):
-        fichier = open('coordonnees.txt', 'w')
+        self.numero += 1
+        fichier = open('coordonnees'+str(self.numero)+'.txt', 'w')
         fichier.write(self.valeurs)
         fichier.close()
-        self.text_affichage.set("coordonnées enregistrées \n dans \n coordonnees.txt")
+        self.text_affichage.set("coordonnées enregistrées \n dans \n coordonnees{}.txt".format(self.numero))
         
     
     def create(self):
